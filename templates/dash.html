@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+{% load static %}
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Dashboard</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="node_modules/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css">
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <link rel="stylesheet" href="{% static 'node_modules/jquery-bar-rating/dist/themes/css-stars.css' %}">
+  <link rel="stylesheet" href="{% static 'node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css' %}" />
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <!-- endinject -->
+  <link rel="icon" href="{% static 'images/dashboardSide.png' %}" sizes="16x16 32x32"/>
+</head>
+<body>
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="index.html"><img src="{% static 'images/stats.svg' %}" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{% static 'images/stats.svg' %}" alt="logo"/></a>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <div class="row row-offcanvas row-offcanvas-right">
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">
+                <span class="menu-title">Dashboard</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+            </li>
+            <!--<li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Basic UI Elements</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+              </a>
+              <div class="collapse" id="ui-basic">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+                </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/icons/font-awesome.html">
+                <span class="menu-title">Icons</span>
+                <i class="mdi mdi-contacts menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/forms/basic_elements.html">
+                <span class="menu-title">Form Elements</span>
+                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/charts/chartjs.html">
+                <span class="menu-title">Chart</span>
+                <i class="mdi mdi-chart-bar menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/tables/bootstrap-table.html">
+                <span class="menu-title">Table</span>
+                <i class="mdi mdi-table-large menu-icon"></i>
+              </a>
+            </li> -->
+            <!--<li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                <span class="menu-title">Sample Pages</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-lock menu-icon"></i>
+              </a> -->
+              <div class="collapse" id="auth">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+          <!--<div class="sidebar-progress">
+            <p>Total Sales</p>
+            <div class="progress progress-sm">
+              <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <p>50 Items sold</p>
+          </div>
+          <div class="sidebar-progress">
+            <p>Customer Target</p>
+            <div class="progress progress-sm">
+              <div class="progress-bar bg-gradient-primary" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <p>200 Items sold</p>
+          </div> -->
+        </nav>
+        <!-- partial -->
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-4 stretch-card grid-margin">
+              <div class="card bg-gradient-warning text-white">
+                <div class="card-body">
+                  <h4 class="font-weight-normal mb-3">Accuracy</h4>
+                  <h2 class="font-weight-normal mb-5">
+                    <script>
+                      var num = {{ acc|safe }};
+                      var n = num.toFixed(2);
+                      document.write(n);
+                    </script>
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 stretch-card grid-margin">
+              <div class="card bg-gradient-info text-white">
+                <div class="card-body">
+                  <h4 class="font-weight-normal mb-3">Area Under Curve</h4>
+                  <h2 class="font-weight-normal mb-5">
+                    <script>
+                      var num = {{ auc|safe }};
+                      var n = num.toFixed(2);
+                      document.write(n);
+                    </script>
+                  </h2>
+                </div>
+              </div>
+            </div>
+<!--          <div class="col-md-4 stretch-card grid-margin">
+              <div class="card bg-gradient-success text-white">
+                <div class="card-body">
+                  <h4 class="font-weight-normal mb-3">Visitors Online</h4>
+                  <h2 class="font-weight-normal mb-5">955741235</h2>
+                  <p class="card-text">Increased by 5%</p>
+                </div>
+              </div>
+            </div> -->
+          </div>
+          <div class="row">
+            <div class="col-md-7 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Multiple Axes Chart</h4>
+                    <script src="https://code.highcharts.com/highcharts.js"></script>
+                    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+                    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+                    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+                    <figure class="highcharts-figure">
+                      <div id="tschart">
+                        <p class="highcharts-description">
+                          Endorsement dilakukan pada bulan November 2020 dan memberikan dampak
+                          yang cukup besar terhadap laju perkembangan tweets mengenai produk Sprite Waterlymon.
+                        </p>
+                      </div>
+                    </figure>
+                  <canvas id="sales-chart"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-5 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body d-flex flex-column">
+                  <h4 class="card-title">Semi Circle Donut Chart</h4>
+                  <script src="https://code.highcharts.com/highcharts.js"></script>
+                  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+                  <figure class="highcharts-figure">
+                      <div id="donut"></div>
+                      <p class="highcharts-description">
+                          Jumlah tweets positive memiliki jumlah terbanyak dengan persentase 50,9%
+                          dari jumlah keseluruhan tweets.
+                      </p>
+                  </figure>
+                  <div class="mt-auto">
+                    <canvas id="satisfaction-chart" height="200"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2017 <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap Dash</a>. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- row-offcanvas ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+
+  <!-- plugins:js -->
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <script src="node_modules/chart.js/dist/Chart.min.js"></script>
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <script src="{% static 'js/off-canvas.js' %}"></script>
+  <script src="{% static 'js/misc.js' %}"></script>
+  <!-- endinject -->
+
+  <!-- dashboard testing -->
+  <script type="text/javascript">
+Highcharts.chart('tschart', {
+  chart: {
+    zoomType: 'xy'
+  },
+  title: {
+    text: 'Monthly Tweets Classification',
+    align: 'left'
+  },
+  subtitle: {
+    text: 'All Classes',
+    align: 'left'
+  },
+  xAxis: [{
+    categories: {{ dfGroupMonth|safe }},
+    crosshair: true
+  }],
+  yAxis: [{ // Primary yAxis
+    labels: {
+      format: '{value}',
+      style: {
+        color: Highcharts.getOptions().colors[2]
+      }
+    },
+    title: {
+      text: '',
+      style: {
+        color: Highcharts.getOptions().colors[2]
+      }
+    },
+    opposite: true
+
+  }, { // Secondary yAxis
+    gridLineWidth: 0,
+    title: {
+      text: 'All Tweets',
+      style: {
+        color: Highcharts.getOptions().colors[0]
+      }
+    },
+    labels: {
+      format: '{value}',
+      style: {
+        color: Highcharts.getOptions().colors[0]
+      }
+    }
+
+  }, { // Tertiary yAxis
+    gridLineWidth: 0,
+    title: {
+      text: 'Sea-Level Pressure',
+      style: {
+        color: Highcharts.getOptions().colors[1]
+      }
+    },
+    labels: {
+      format: '{value}',
+      style: {
+        color: Highcharts.getOptions().colors[1]
+      }
+    },
+    opposite: true
+  }],
+  tooltip: {
+    shared: true
+  },
+  legend: {
+    layout: 'vertical',
+    align: 'left',
+    x: 80,
+    verticalAlign: 'top',
+    y: 55,
+    floating: true,
+    backgroundColor:
+      Highcharts.defaultOptions.legend.backgroundColor || // theme
+      'rgba(255,255,255,0.25)'
+  },
+  series: [{
+    name: 'All Tweets',
+    type: 'column',
+    yAxis: 1,
+    data: {{ dfGroupCount|safe }},
+    tooltip: {
+      valueSuffix: ' tweets'
+    }
+
+  }, {
+    name: 'Netral',
+    type: 'spline',
+    yAxis: 2,
+    data: {{ dfNetCount|safe }},
+    marker: {
+      enabled: false
+    },
+    dashStyle: 'shortdot',
+    tooltip: {
+      valueSuffix: ' tweets'
+    }
+
+  }, {
+    name: 'Positive',
+    type: 'spline',
+    data: {{ dfPosCount|safe }},
+    tooltip: {
+      valueSuffix: ' tweets'
+    }
+  },
+  {
+    name: 'Negative',
+    type: 'spline',
+    data: {{ dfNegCount|safe }},
+    tooltip: {
+      valueSuffix: ' tweets'
+    }
+  }],
+  responsive: {
+    rules: [{
+      condition: {
+        maxWidth: 500
+      },
+      chartOptions: {
+        legend: {
+          floating: false,
+          layout: 'horizontal',
+          align: 'center',
+          verticalAlign: 'bottom',
+          x: 0,
+          y: 0
+        },
+        yAxis: [{
+          labels: {
+            align: 'right',
+            x: 0,
+            y: -6
+          },
+          showLastLabel: false
+        }, {
+          labels: {
+            align: 'left',
+            x: 0,
+            y: -6
+          },
+          showLastLabel: false
+        }, {
+          visible: false
+        }]
+      }
+    }]
+  }
+});
+
+</script>
+  <script type="text/javascript">
+  Highcharts.chart('donut', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: 0,
+        plotShadow: false
+    },
+    title: {
+        text: '<br>Tweets<br>Classification<br>2020',
+        align: 'center',
+        verticalAlign: 'middle',
+        y: 60
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b><br>Tweets Count: <b>{point.y} tweets</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            dataLabels: {
+                enabled: true,
+                distance: -50,
+                style: {
+                    fontWeight: 'bold',
+                    color: 'white'
+                }
+            },
+            startAngle: -90,
+            endAngle: 90,
+            center: ['50%', '75%'],
+            size: '110%'
+        }
+    },
+    series: [{
+        type: 'pie',
+        name: 'Percentage',
+        innerSize: '50%',
+        data: [
+            ['Positive', {{ dfPiePos|safe }}],
+            ['Netral', {{ dfPieNet|safe }}],
+            {
+                name: 'Negative',
+                y: {{ dfPieNeg|safe }},
+                dataLabels: {
+                    enabled: false
+                }
+            }
+        ]
+    }]
+});
+
+  </script>
+
+  <!-- Custom js for this page-->
+  <script src="{% static 'js/dashboard.js' %}"></script>
+
+  <!-- End custom js for this page-->
+</body>
+
+</html>
